@@ -3,11 +3,19 @@ import rclpy
 from rclpy.node import Node
 from example_interfaces.srv import AddTwoInts
 
-
 class AddTwoIntsServerNode(Node):
     def __init__(self):
-        super().__init__("add_two_ints_server") # MODIFY node name, can be the same as filename, not required
+        super().__init__("add_two_ints_server")
+        self.server_ = self.create_service(
+            AddTwoInts, "add_two_ints", self.callback_add_two_ints) #name services using a verb since it is an action
+        self.get_logger().info("Add Two Ints server has started.")
 
+    def callback_add_two_ints(self, request: AddTwoInts.Request, response: AddTwoInts.Response):
+        response.sum = request.a + request.b
+        self.get_logger().info(str(request.a) + " + " + 
+                               str(request.b) + " = " + 
+                               str(response.sum))
+        return response #remember to include this because services return responses unlike topics
 
 def main(args=None):
     rclpy.init(args=args)
