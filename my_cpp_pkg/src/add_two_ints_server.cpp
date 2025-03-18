@@ -6,7 +6,7 @@ using namespace std::placeholders;
 class AddTwoIntsServerNode : public rclcpp::Node
 {
 public:
-    AddTwoIntsServerNode() : Node("add_two_ints_server")
+    AddTwoIntsServerNode() : Node("add_two_ints_server") 
     {
         server_ = this->create_service<example_interfaces::srv::AddTwoInts>(
             "add_two_ints", 
@@ -23,7 +23,7 @@ private:
                     (int)request->a, (int)request->b, (int)response->sum);
     }
     
-    rclcpp::Service<example_interfaces::srv::AddTwoInts>SharedPtr server_;
+    rclcpp::Service<example_interfaces::srv::AddTwoInts>::SharedPtr server_;
 
 };
  
