@@ -1,2 +1,4 @@
 my_py_pkg/my_py_pkg/__pycache__/add_two_ints_client_no_oop.cpython-312.pyc
 my_py_pkg/my_py_pkg/__pycache__/add_two_ints_client.cpython-312.pyc
+my_cpp_pkg/src/.vscode/c_cpp_properties.json
+my_cpp_pkg/src/.vscode/settings.json
